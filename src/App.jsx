@@ -46,7 +46,7 @@ function App() {
               <InputBar />
             </div>
 
-            <div className=" max-h-[700px] p-[20px] overflow-y-scroll">
+            <div className=" max-h-[600px] p-[20px] overflow-y-scroll">
               {/* Todo Item components */}
               {todos.map((item)=> <div key={item.id}> <TodoItem  todo={item} />  </div> )}
             </div>

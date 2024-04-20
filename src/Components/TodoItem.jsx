@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect,useRef } from "react";
 import { motion } from "framer-motion";
 import { FiEdit } from "react-icons/fi";
 import { MdDeleteForever } from "react-icons/md";
@@ -26,27 +26,37 @@ function TodoItem({ todo }) {
     markTodo(todo.id);
   };
 
+  const inputRef = useRef(null);
+
+
+  useEffect(() => {
+    if (isEditable) {
+        inputRef.current.focus();
+    }
+}, [isEditable]);
+
   return (
     <>
       <motion.div
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
+        
         transition={{
-          duration: 0.3,
+          duration: 0.5,
           ease: [0, 0.71, 0.2, 1.01],
           scale: {
             type: "spring",
-            damping: 5,
+            duration: 0.3,
             stiffness: 100,
             restDelta: 0.001,
           },
         }}
-        className={`bg-[#DBD8E3] w-full h-[50px] border-[2px] border-black rounded-lg flex  items-center pl-[10px] gap-[10px] ${
-          todo.marked ? "bg-[#8DECB4]" : ""
-        }`}
+        className={`${todo.marked ? "bg-[#8DECB4]" : "bg-[#DBD8E3]"} w-full h-[50px] border-[2px] border-black rounded-lg flex  items-center pl-[10px] gap-[10px] 
+        `}
       >
         <div className="h-[25px] w-[5%] flex items-center justify-center ">
           <input
+          disabled={isEditable}
             checked={todo.marked}
             onChange={handleMark}
             type="checkbox"
@@ -56,6 +66,7 @@ function TodoItem({ todo }) {
 
         <div className="h-full w-[70%] flex items-center justify-center">
           <input
+            ref={inputRef}
             readOnly={!isEditable}
             value={todoTitle}
             onChange={(e) => setTodoTitle(e.target.value)}
