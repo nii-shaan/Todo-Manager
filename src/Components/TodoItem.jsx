@@ -99,7 +99,7 @@ function TodoItem({ todo }) {
             {isEditable ? (
               <FaRegSave className="h-[30px] w-[30px] hover:text-[#17594A] active:text-[#FF004D]" />
             ) : (
-              <FiEdit className="h-[30px] w-[30px] hover:text-[#17594A] active:text-[#FF004D]" />
+              <FiEdit className={`${todo.marked?"text-gray-500 active:text-gray-500 hover:text-gray-500":"text-black"} h-[30px] w-[30px] hover:text-[#17594A] active:text-[#FF004D]`} />
             )}
           </button>
           <RxDividerVertical className="text-[40px]" />
