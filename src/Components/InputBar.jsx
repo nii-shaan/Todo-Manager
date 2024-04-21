@@ -9,7 +9,7 @@ function InputBar() {
 
 
     const handleAddTask = ()=>{
-      if(!userInput) return
+      if(!userInput.trim()) return
         addTodo(userInput)
         setUserInput("")
 
@@ -20,7 +20,7 @@ function InputBar() {
   return (
     <>
       <div className="w-full h-[80px] flex items-center justify-center ">
-        <input value={userInput} onChange={(e)=>setUserInput(e.target.value.trim())} type="text" className="w-[300px] h-[40px] outline-none  text-center rounded-l-lg" />
+        <input value={userInput} onChange={(e)=>setUserInput(e.target.value)} type="text" className="w-[300px] h-[40px] outline-none  text-center rounded-l-lg" />
 
 
 

@@ -107,7 +107,7 @@ function TodoItem({ todo }) {
             <MdDeleteForever className="h-[35px] w-[35px] hover:text-[#FF004D] active:text-[#17594A] " />
           </button>
         </div>
-      </motion.div>
+      </motion.div>   
     </>
   );
 }
