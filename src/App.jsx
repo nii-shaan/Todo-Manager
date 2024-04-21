@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import InputBar from "./Components/InputBar";
 import TodoItem from "./Components/TodoItem";
 import { TodoContextProvider } from "./Contexts/TodoContext";
@@ -34,6 +34,20 @@ function App() {
     );
   };
 
+
+useEffect(()=>{
+  const localStorageTodos = JSON.parse(localStorage.getItem("todos"))
+   if(localStorageTodos && localStorageTodos.length>0){
+     setTodos(localStorageTodos)
+   }
+
+},[])
+
+useEffect(()=>{
+localStorage.setItem("todos",JSON.stringify(todos))
+},[todos])
+
+    
   return (
     <>
       <TodoContextProvider value={{ todos,addTodo, editTodo, deleteTodo, markTodo }}>
