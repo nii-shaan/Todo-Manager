@@ -19,7 +19,7 @@ function InputBar() {
 
   return (
     <>
-      <div className="w-full h-[80px] flex items-center justify-center ">
+      <div className="w-full h-[80px] flex items-center justify-center md:w-[90%]">
         <input value={userInput} onChange={(e)=>setUserInput(e.target.value)} type="text" className="w-[300px] h-[40px] outline-none  text-center rounded-l-lg" />
 
 

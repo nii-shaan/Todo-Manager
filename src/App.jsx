@@ -52,7 +52,7 @@ localStorage.setItem("todos",JSON.stringify(todos))
     <>
       <TodoContextProvider value={{ todos,addTodo, editTodo, deleteTodo, markTodo }}>
         <div className="bg-[#212121] h-[1200px] w-full ] flex items-start">
-          <div className="bg-[#303A52] min-h-[300px] w-[800px]  mx-auto mt-[100px] rounded-lg">
+          <div className="bg-[#303A52] min-h-[300px] w-[800px]  mx-auto mt-[100px] rounded-lg md:w-[400px]">
             <div
               id="inputSection"
               className=" border-b border-white h-[100px] w-full flex items-center justify-center"
