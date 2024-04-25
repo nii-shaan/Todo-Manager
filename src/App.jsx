@@ -1,12 +1,13 @@
 import React, { useState,useEffect } from "react";
 import InputBar from "./Components/InputBar";
 import TodoItem from "./Components/TodoItem";
-import { TodoContextProvider } from "./Contexts/TodoContext";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addTodo } from "./State/todoSlice";
 
 
 
 function App() {
+  const dispatch = useDispatch()
 
   
   const fetchedTodoFromStore = useSelector((store)=>store.todo.todos)
@@ -19,8 +20,9 @@ function App() {
 
 useEffect(()=>{
   const localStorageTodos = JSON.parse(localStorage.getItem("todos"))
-   if(localStorageTodos && localStorageTodos.length>0){
-     setTodos(localStorageTodos)
+  console.log(localStorageTodos);
+   if(localStorageTodos && localStorageTodos.length>0) {
+    localStorageTodos.map((item)=>dispatch(addTodo(item)))
    }
 
 },[])
@@ -29,7 +31,7 @@ useEffect(()=>{
 localStorage.setItem("todos",JSON.stringify(todos))
 },[todos])
 
-    
+    ``
   return (
     <>
 

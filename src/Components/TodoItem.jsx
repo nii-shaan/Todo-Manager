@@ -3,10 +3,9 @@ import { motion } from "framer-motion";
 import { FiEdit } from "react-icons/fi";
 import { MdDeleteForever } from "react-icons/md";
 import { RxDividerVertical } from "react-icons/rx";
-import { useTodoContext } from "../Contexts/TodoContext";
 import { FaRegSave } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { editTodo,addTodo,deleteTodo,markTodo } from "../State/todoSlice";
+import { editTodo,deleteTodo,markTodo } from "../State/todoSlice";
 
 function TodoItem({ todo }) {
   // console.log(todo);
