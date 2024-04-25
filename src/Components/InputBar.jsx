@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import { useTodoContext } from "../Contexts/TodoContext";
 import { useDispatch } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
 import { addTodo } from "../State/todoSlice";
 
 
@@ -19,7 +17,7 @@ function InputBar() {
     const handleAddTask = ()=>{
       if(!userInput.trim()) return
       
-        dispatch(addTodo({id:nanoid(),todo:userInput,marked:false}))
+        dispatch(addTodo({id:Date.now(),todo:userInput,marked:false}))
         setUserInput("")
 
     }
