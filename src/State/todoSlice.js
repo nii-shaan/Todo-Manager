@@ -19,7 +19,7 @@ const todoSlice = createSlice({
 
         },
         markTodo:(state,action)=>{
-            state.todos=state.todos.map((item)=>item.id===action.payload.id?{...item,marked:!item[marked]}:item)
+            state.todos=state.todos.map((item)=>item.id===action.payload.id?{...item,marked:!item.marked}:item)
         }
     }
 })
