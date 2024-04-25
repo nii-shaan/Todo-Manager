@@ -5,25 +5,29 @@ import { MdDeleteForever } from "react-icons/md";
 import { RxDividerVertical } from "react-icons/rx";
 import { useTodoContext } from "../Contexts/TodoContext";
 import { FaRegSave } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { editTodo,addTodo,deleteTodo,markTodo } from "../State/todoSlice";
 
 function TodoItem({ todo }) {
-  console.log(todo);
+  // console.log(todo);
+
+  const dispatch = useDispatch()
 
   const [isEditable, setIsEditable] = useState(false);
   const [todoTitle, setTodoTitle] = useState(todo.todo);
-  const { editTodo, deleteTodo, markTodo } = useTodoContext();
+
 
   const handleEdit = () => {
-    editTodo(todo.id, todoTitle);
+    dispatch(editTodo({id:todo.id,todo:todoTitle}))
     setIsEditable(false)
   };
 
   const handleDelete = () => {
-    deleteTodo(todo.id);
+    dispatch(deleteTodo({id:todo.id}))
   };
 
   const handleMark = () => {
-    markTodo(todo.id);
+    dispatch(markTodo({id:todo.id}))
   };
 
   const inputRef = useRef(null);
@@ -90,7 +94,7 @@ function TodoItem({ todo }) {
                     handleEdit()
                 }else{
                     setIsEditable((prev)=>!prev)
-                    console.log('pass');
+                    // console.log('pass');
 
                 }
                 
